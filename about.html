@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* Updated background to match Home page */
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* nostalgic dark + light blue */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      text-align: center;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    p {
+      text-align: center;
+      max-width: 700px;
+      font-size: 18px;
+      margin-bottom: 50px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Carousel */
+    .carousel-container {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      height: 450px;
+      perspective: 1200px;
+      margin-bottom: 60px;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .carousel img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 400px;
+      transform-origin: center center;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      transition: transform 1s, opacity 1s;
+      cursor: pointer;
+    }
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #ff4500; /* warrior red accent */
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      user-select: none;
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(255,69,0,0.6);
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 20px rgba(255,69,0,0.8), 0 0 30px rgba(255,69,0,0.5);
+    }
+
+    .btn-left { left: -20px; }
+    .btn-right { right: -20px; }
+
+    /* Team section */
+    .team {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .member {
+      background: rgba(255,255,255,0.1); /* subtle dark-blue overlay */
+      padding: 20px;
+      border-radius: 15px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+      color: #fff;
+    }
+
+    .member:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(255,69,0,0.7); /* red warrior highlight on hover */
+    }
+
+    .member img {
+      width: 100%;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 2px solid #ff4500; /* red warrior outline */
+    }
+
+    .member h3 {
+      margin: 10px 0 5px;
+    }
+
+    .member p {
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    @media(max-width: 768px) {
+      .carousel img {
+        width: 200px;
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>About Me and the Website</h1>
+  <p>Welcome! Get to know more about me and this website.</p>
+
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <img src="https://via.placeholder.com/300x400/ff7f50/ffffff?text=Image+1" alt="Image 1">
+      <img src="https://via.placeholder.com/300x400/6a5acd/ffffff?text=Image+2" alt="Image 2">
+      <img src="https://via.placeholder.com/300x400/20b2aa/ffffff?text=Image+3" alt="Image 3">
+      <img src="https://via.placeholder.com/300x400/f08080/ffffff?text=Image+4" alt="Image 4">
+    </div>
+    <button class="btn btn-left" onclick="prevSlide()">❮</button>
+    <button class="btn btn-right" onclick="nextSlide()">❯</button>
+  </div>
+
+  <h2>About The Creator</h2>
+  <div class="team">
+    <div class="member">
+      <img src="https://via.placeholder.com/150.png?text=Jane" alt="Jane">
+      <h3>Yuthra Yuphel Lhamo</h3>
+      <p>Writer, dancer.</p>
+    </div>
+  </div>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const slides = carousel.children;
+    let angle = 0;
+    const total = slides.length;
+    const theta = 360 / total;
+    const radius = 400;
+
+    function setupCarousel() {
+      for(let i=0; i<total; i++){
+        slides[i].style.transform = `rotateY(${i * theta}deg) translateZ(${radius}px)`;
+      }
+    }
+
+    setupCarousel();
+
+    let currentRotation = 0;
+
+    function nextSlide() {
+      currentRotation -= theta;
+      carousel.style.transform = `translateZ(-${radius}px) rotateY(${currentRotation}deg)`;
+    }
+
+    function prevSlide() {
+      currentRotation += theta;
+      carousel.style.transform = `translateZ(-${radius}px) rotateY(${currentRotation}deg)`;
+    }
+
+    setInterval(nextSlide, 4000);
+  </script>
+
+</body>
+</html>
