@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Urban Vibe Dance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
 
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      justify-items: center;
+    }
+
+    .polaroid {
+      background: #fff;
+      color: #000;
+      padding: 10px 10px 25px 10px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transform: rotate(-2deg);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      display: block;
+    }
+
+    .caption {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #ff4500; /* red accent */
+      font-size: 16px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+
+    @media(max-width: 768px) {
+      .polaroid {
+        width: 150px;
+        padding: 8px 8px 20px 8px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Dance Gallery</h1>
+
+  <div class="gallery">
+    <div class="polaroid">
+      <img src="https://via.placeholder.com/200x200/203a43/ffffff?text=Dance+1" alt="Dance 1">
+      <div class="caption">Breaking</div>
+    </div>
+
+    <div class="polaroid">
+      <img src="https://via.placeholder.com/200x200/0f2027/ffffff?text=Dance+2" alt="Dance 2">
+      <div class="caption">Hip-Hop</div>
+    </div>
+
+    <div class="polaroid">
+      <img src="https://via.placeholder.com/200x200/2c5364/ffffff?text=Dance+3" alt="Dance 3">
+      <div class="caption">Popping</div>
+    </div>
+
+    <div class="polaroid">
+      <img src="https://via.placeholder.com/200x200/203a43/ffffff?text=Dance+4" alt="Dance 4">
+      <div class="caption">Freestyle</div>
+    </div>
+  </div>
+
+</body>
+</html>
